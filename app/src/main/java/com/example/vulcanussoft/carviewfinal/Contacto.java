@@ -4,15 +4,15 @@ package com.example.vulcanussoft.carviewfinal;
 public class Contacto {
     private String nombre;
     private String email;
-    private String telefono;
+    private String like;
     private String descripcion;
     private String fecha;
     private  int foto;
 
-    public Contacto(int foto, String nombre, String email, String telefono, String fecha){
+    public Contacto(int foto, String nombre, String email, String like, String fecha){
         this.nombre=nombre;
         this.email=email;
-        this.telefono=telefono;
+        this.like=like;
         this.fecha=fecha;
         this.foto=foto;
 
@@ -35,12 +35,12 @@ public class Contacto {
         this.email = email;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getLike() {
+        return like;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setLike(String like) {
+        this.like = like;
     }
 
     public String getDescripcion() {

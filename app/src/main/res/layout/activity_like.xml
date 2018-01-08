@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.vulcanussoft.carviewfinal.LikeActivity">
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvPets"
         android:layout_height="match_parent"

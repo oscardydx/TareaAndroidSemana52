@@ -34,11 +34,11 @@ public class LikeActivity extends AppCompatActivity {
     public void inicializarListaDeContactos(){
         favoritePets = new ArrayList<Contacto>();
 
-        favoritePets.add(new Contacto(R.drawable.animal1,"Jako","jako@.com","5666666","4/3/4"));
-        favoritePets.add(new Contacto(R.drawable.animal2,"Toby","Toby@oar.com","1455666","4/3/4"));
-        favoritePets.add(new Contacto(R.drawable.animal3,"Juno","jako@.com","5666666","4/3/4"));
-        favoritePets.add(new Contacto(R.drawable.animal4,"Betto","Toby@oar.com","1455666","4/3/4"));
-        favoritePets.add(new Contacto(R.drawable.animal5,"Jako","jako@.com","5666666","4/3/4"));
+        favoritePets.add(new Contacto(R.drawable.panda,"Jako","jako@.com","40","4/3/4"));
+        favoritePets.add(new Contacto(R.drawable.animal1,"Toby","Toby@oar.com","35","4/3/4"));
+        favoritePets.add(new Contacto(R.drawable.animal2,"Juno","jako@.com","10","4/3/4"));
+        favoritePets.add(new Contacto(R.drawable.animal3,"Betto","Toby@oar.com","50","4/3/4"));
+        favoritePets.add(new Contacto(R.drawable.animal4,"fito","jako@.com","10","4/3/4"));
 
     }
 

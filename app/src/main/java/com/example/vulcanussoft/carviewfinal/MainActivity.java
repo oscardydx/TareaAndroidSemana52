@@ -42,16 +42,16 @@ public class MainActivity extends AppCompatActivity {
     public void inicializarListaDeContactos(){
         contactos = new ArrayList<Contacto>();
 
-        contactos.add(new Contacto(R.drawable.animal1,"Jako","jako@.com","5666666","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal2,"Toby","Toby@oar.com","1455666","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal3,"Juno","jako@.com","5666666","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal4,"Betto","Toby@oar.com","1455666","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal5,"Jako","jako@.com","5666666","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal6,"Toby","Toby@oar.com","1455666","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal7,"Juno","jako@.com","5666666","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal8,"Betto","Toby@oar.com","1455666","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal9,"Juno","jako@.com","5666666","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal10,"Betto","Toby@oar.com","1455666","4/3/4"));
+        contactos.add(new Contacto(R.drawable.panda,"Jako","jako@.com","20","4/3/4"));
+        contactos.add(new Contacto(R.drawable.animal1,"Toby","Toby@oar.com","14","4/3/4"));
+        contactos.add(new Contacto(R.drawable.animal2,"Juno","jako@.com","56","4/3/4"));
+        contactos.add(new Contacto(R.drawable.animal3,"Betto","Toby@oar.com","6","4/3/4"));
+        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","5","4/3/4"));
+        contactos.add(new Contacto(R.drawable.animal6,"Toby","Toby@oar.com","6","4/3/4"));
+        contactos.add(new Contacto(R.drawable.animal7,"Juno","jako@.com","56","4/3/4"));
+        contactos.add(new Contacto(R.drawable.animal8,"Betto","Toby@oar.com","14","4/3/4"));
+        contactos.add(new Contacto(R.drawable.animal9,"Juno","jako@.com","66","4/3/4"));
+        contactos.add(new Contacto(R.drawable.animal10,"Betto","Toby@oar.com","16","4/3/4"));
 
     }
 

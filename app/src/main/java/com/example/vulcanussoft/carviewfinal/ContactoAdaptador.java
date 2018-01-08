@@ -34,12 +34,13 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     }
     //asocia cada elemento de la lista a cada view
     @Override
-    public void onBindViewHolder(ContactoViewHolder contactoViewHolder, int position) {
+    public void onBindViewHolder(final ContactoViewHolder contactoViewHolder, int position) {
         final Contacto contacto=contactos.get(position);
 
         contactoViewHolder.imgFoto.setImageResource(contacto.getFoto());
         contactoViewHolder.tvNombreCV.setText(contacto.getNombre());
-        contactoViewHolder.tvTelefonoCV.setText(contacto.getTelefono());
+        contactoViewHolder.tvLikeCV.setText(contacto.getLike());
+
 
 
         contactoViewHolder.btnLik.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +54,12 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
                                 //Log.i("SnackBAR","Click en SnackBar");
                             }
                         }).show();
+
+                int rating;
+                rating = Integer.parseInt((String) contactoViewHolder.tvLikeCV.getText());
+                ++rating;
+                contactoViewHolder.tvLikeCV.setText(Integer.toString(rating));
+
             }
         });
     }
@@ -65,7 +72,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     public static class ContactoViewHolder extends RecyclerView.ViewHolder{
         private ImageView imgFoto;
         private TextView tvNombreCV;
-        private TextView tvTelefonoCV;
+        private TextView tvLikeCV;
         private ImageButton btnLik;
 
         public ContactoViewHolder(View itemView) {
@@ -73,7 +80,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
 
             imgFoto= (ImageView) itemView.findViewById(R.id.imag1);
             tvNombreCV=(TextView) itemView.findViewById(R.id.text1);
-            tvTelefonoCV=(TextView) itemView.findViewById(R.id.text2);
+            tvLikeCV=(TextView) itemView.findViewById(R.id.text2);
             btnLik=(ImageButton) itemView.findViewById(R.id.bntLike);
 
         }
