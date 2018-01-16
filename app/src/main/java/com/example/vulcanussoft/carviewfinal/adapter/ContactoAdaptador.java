@@ -1,4 +1,4 @@
-package com.example.vulcanussoft.carviewfinal;
+package com.example.vulcanussoft.carviewfinal.adapter;
 
 
 import android.app.Activity;
@@ -6,13 +6,16 @@ import android.app.Activity;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 //import android.util.Log;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.vulcanussoft.carviewfinal.pojo.Contacto;
+import com.example.vulcanussoft.carviewfinal.R;
+
 import java.util.ArrayList;
 
 
@@ -20,7 +23,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
      ArrayList<Contacto> contactos;
      Activity activity;
 
-     ContactoAdaptador(ArrayList<Contacto> contactos){
+     public ContactoAdaptador(ArrayList<Contacto> contactos){
         this.contactos=contactos;
         this.activity=activity;
     }

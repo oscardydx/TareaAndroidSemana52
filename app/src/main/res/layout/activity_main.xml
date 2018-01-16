@@ -3,40 +3,62 @@
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:layout_height="match_parent"
+android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
 tools:context="com.example.vulcanussoft.carviewfinal.MainActivity">
 
-<android.support.constraint.ConstraintLayout android:layout_height="match_parent"
-    android:layout_width="match_parent">
 
-    <RelativeLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <!-- <include
-             android:id="@+id/Bar"
-             layout="@layout/actionbar" />-->
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatButton"
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/icon5"
-            tools:layout_editor_absoluteX="200dp"
-            tools:layout_editor_absoluteY="0dp" />
+            app:layout_scrollFlags="scroll|enterAlways"></android.support.v7.widget.Toolbar>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvContactos"
-            android:layout_below="@+id/floatButton"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent" />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/viewPager"></android.support.v4.view.ViewPager>
+
+ <!--   <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/icon5"
+        app:layout_anchor="@+id/appBarLayout"
+        app:layout_anchorGravity="left|bottom"
+        tools:layout_editor_absoluteX="200dp"
+        tools:layout_editor_absoluteY="0dp" />-->
+
+    <!-- <android.support.constraint.ConstraintLayout android:layout_height="match_parent"
+        android:layout_width="match_parent">
+    
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    
+             <include
+                 android:id="@+id/Bar"
+                 layout="@layout/actionbar" />
+
 
 
     </RelativeLayout>
-</android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>-->
 
 </android.support.design.widget.CoordinatorLayout>
 

@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Animal Social</string>
     <string name="nombre">Nombre</string>
+    <string name="user">Fito</string>
     <string name="telefono">Teléfono</string>
     <string name="mensaje">TMensaje ....</string>
+    <string name="coment">Comentarios</string>
+    <string name="about">Sobre Nosotros</string>
+    <string name="fnombre">Ingresa tu Nombre</string>
+    <string name="fcorreo">Ingresa tu Correo</string>
+    <string name="fmensaje">Ingresa el Mensaje</string>
+    <string name="confirmacion">El Mensaje fue enviado</string>
+    <string name="bio">"@oscardydx" es Desarrollador de software junior en c++ y php, estudiante univrsitario y emprendedor en Colombia.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Biografía</string>
 </resources>

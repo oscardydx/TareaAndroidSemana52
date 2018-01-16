@@ -1,21 +1,29 @@
 package com.example.vulcanussoft.carviewfinal;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-//import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.example.vulcanussoft.carviewfinal.adapter.PageAdapter;
+import com.example.vulcanussoft.carviewfinal.fragment.PerfilFragment;
+import com.example.vulcanussoft.carviewfinal.fragment.RecyclerViewFragment;
+
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Contacto> contactos;
-    private RecyclerView listaDeContactos;
+
+    private TabLayout tabLayout;
+    public Toolbar toolbar;
+    private ViewPager viewPager;
 
     //Toolbar actionbare=(Toolbar) findViewById(R.id.Bar);
 
@@ -24,51 +32,76 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listaDeContactos= findViewById(R.id.rvContactos);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        tabLayout= findViewById(R.id.tabs);
+        toolbar= findViewById(R.id.toolbar);
+        viewPager= findViewById(R.id.viewPager);
 
-        listaDeContactos.setLayoutManager(llm);
-        inicializarListaDeContactos();
-        inicializadorAdaptador();
+        setUpViewPager();
 
-        Fab();
+
+
+      if (toolbar != null){
+          setSupportActionBar(toolbar);
+      }
+
+       // Fab();
+    }
+    private ArrayList<Fragment> agregarFragments(){
+        ArrayList<Fragment> fragments= new ArrayList<>();
+        fragments.add(new RecyclerViewFragment());
+        fragments.add(new PerfilFragment());
+
+        return fragments;
+    }
+    private void setUpViewPager(){
+
+    viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),agregarFragments()));
+    tabLayout.setupWithViewPager(viewPager);
+    tabLayout.getTabAt(0).setIcon(R.drawable.ic_doghouse);
+    tabLayout.getTabAt(1).setIcon(R.drawable.ic_dogperfil);
     }
 
-    public void inicializadorAdaptador(){
-        ContactoAdaptador adaptador=new ContactoAdaptador(contactos);
-        listaDeContactos.setAdapter(adaptador);
-    }
-    public void inicializarListaDeContactos(){
-        contactos = new ArrayList<Contacto>();
-
-        contactos.add(new Contacto(R.drawable.panda,"Jako","jako@.com","20","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal1,"Toby","Toby@oar.com","14","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal2,"Juno","jako@.com","56","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal3,"Betto","Toby@oar.com","6","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","5","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal6,"Toby","Toby@oar.com","6","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal7,"Juno","jako@.com","56","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal8,"Betto","Toby@oar.com","14","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal9,"Juno","jako@.com","66","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal10,"Betto","Toby@oar.com","16","4/3/4"));
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_opciones,menu);
+        return true;
     }
 
-    private void Fab() {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.About:
+                Intent intent=new Intent(MainActivity.this,Sobre_Nosotros.class);
+                startActivity(intent);
+                break;
+            case R.id.Contact:
+                Intent intent2=new Intent(MainActivity.this,FormularioContacto.class);
+                startActivity(intent2);
+                break;
+            case R.id.mRefresh:
+               Intent intent3=new Intent(MainActivity.this,LikeActivity.class);
+               startActivity(intent3);
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+ /*  private void Fab() {
         FloatingActionButton miFab= findViewById(R.id.floatButton);
         miFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Toast.makeText(getBaseContext(),getString(R.string.app_name), Toast.LENGTH_SHORT).show();
-            /*    Snackbar.make(view,getResources().getString(R.string.app_name),Snackbar.LENGTH_SHORT)
+                Snackbar.make(view,getResources().getString(R.string.app_name),Snackbar.LENGTH_SHORT)
                                 .setAction(getResources().getString(R.string.mensaje), new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 Log.i("SnackBAR","Click en SnackBar");
                             }
                         }).setActionTextColor(getResources().getColor(R.color.colorPrimary)).show();
-         */
+
                 Intent intent= new Intent(MainActivity.this,LikeActivity.class);
                 startActivity(intent);
 
@@ -77,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         );
-    }
+    }*/
 }
 
 

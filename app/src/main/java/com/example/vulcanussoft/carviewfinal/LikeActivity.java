@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.vulcanussoft.carviewfinal.adapter.ContactoAdaptador;
+import com.example.vulcanussoft.carviewfinal.pojo.Contacto;
+
 import java.util.ArrayList;
 
 public class LikeActivity extends AppCompatActivity {
 
-    private ArrayList<Contacto> favoritePets;
+   /* private ArrayList<Contacto> favoritePets;
     private RecyclerView petList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,7 @@ public class LikeActivity extends AppCompatActivity {
         inicializadorAdaptador();
 
     }
+
     public void inicializadorAdaptador(){
         ContactoAdaptador adaptador=new ContactoAdaptador(favoritePets);
         petList.setAdapter(adaptador);
@@ -41,5 +45,5 @@ public class LikeActivity extends AppCompatActivity {
         favoritePets.add(new Contacto(R.drawable.animal4,"fito","jako@.com","10","4/3/4"));
 
     }
-
+*/
 }
