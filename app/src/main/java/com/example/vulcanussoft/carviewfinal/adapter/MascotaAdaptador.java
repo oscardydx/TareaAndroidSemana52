@@ -13,18 +13,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.vulcanussoft.carviewfinal.pojo.Contacto;
+import com.example.vulcanussoft.carviewfinal.db.ConstructorMascotas;
+import com.example.vulcanussoft.carviewfinal.pojo.Mascota;
 import com.example.vulcanussoft.carviewfinal.R;
 
 import java.util.ArrayList;
 
 
-public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.ContactoViewHolder>{
-     ArrayList<Contacto> contactos;
+public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.ContactoViewHolder>{
+     ArrayList<Mascota> mascotas;
      Activity activity;
 
-     public ContactoAdaptador(ArrayList<Contacto> contactos){
-        this.contactos=contactos;
+     public MascotaAdaptador(ArrayList<Mascota> mascotas, Activity activity){
+        this.mascotas = mascotas;
         this.activity=activity;
     }
 
@@ -32,17 +33,17 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     //inflar layout y lo pasara al viewholder para que obtenga los views
     @Override
     public ContactoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card_view_contact,parent,false);
+        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card_view_mascota, parent,false);
         return new ContactoViewHolder(v);
     }
     //asocia cada elemento de la lista a cada view
     @Override
     public void onBindViewHolder(final ContactoViewHolder contactoViewHolder, int position) {
-        final Contacto contacto=contactos.get(position);
+        final Mascota mascota = mascotas.get(position);
 
-        contactoViewHolder.imgFoto.setImageResource(contacto.getFoto());
-        contactoViewHolder.tvNombreCV.setText(contacto.getNombre());
-        contactoViewHolder.tvLikeCV.setText(contacto.getLike());
+        contactoViewHolder.imgFoto.setImageResource(mascota.getFoto());
+        contactoViewHolder.tvNombreCV.setText(mascota.getNombre());
+        contactoViewHolder.tvLikeCV.setText(String.valueOf(mascota.getLike()));
 
 
 
@@ -50,18 +51,25 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
             @Override
             public void onClick(View view) {
 
-                Snackbar.make(view,"Diste Like a:",Snackbar.LENGTH_SHORT)
-                        .setAction(contacto.getNombre(), new View.OnClickListener() {
+               /* Snackbar.make(view,"Diste Like a:",Snackbar.LENGTH_SHORT)
+                        .setAction(mascota.getNombre(), new View.OnClickListener() {
                             @Override
-                            public void onClick(View view) {
+                            public void onClic
+                            k(View view) {
                                 //Log.i("SnackBAR","Click en SnackBar");
                             }
-                        }).show();
+                        }).show();*/
 
-                int rating;
+                ConstructorMascotas constructorMascotas=new ConstructorMascotas(activity);
+                constructorMascotas.darLikeMascota(mascota);
+
+                String numlikes=String.valueOf(constructorMascotas.obtenerLikesMascota(mascota));
+                contactoViewHolder.tvLikeCV.setText(numlikes);
+
+               /* int rating;
                 rating = Integer.parseInt((String) contactoViewHolder.tvLikeCV.getText());
                 ++rating;
-                contactoViewHolder.tvLikeCV.setText(Integer.toString(rating));
+                contactoViewHolder.tvLikeCV.setText(Integer.toString(rating));*/
 
             }
         });
@@ -69,7 +77,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
 
     @Override
     public int getItemCount() { //cantidad de elementos que contiene la lista
-        return contactos.size();
+        return mascotas.size();
     }
 
     public static class ContactoViewHolder extends RecyclerView.ViewHolder{

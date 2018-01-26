@@ -10,36 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.vulcanussoft.carviewfinal.R;
-import com.example.vulcanussoft.carviewfinal.adapter.ContactoAdaptador;
-import com.example.vulcanussoft.carviewfinal.pojo.Contacto;
+import com.example.vulcanussoft.carviewfinal.adapter.MascotaAdaptador;
+import com.example.vulcanussoft.carviewfinal.pojo.Mascota;
+import com.example.vulcanussoft.carviewfinal.presentador.IRecyclerViewFragmentPresenter;
+import com.example.vulcanussoft.carviewfinal.presentador.RecyclerViewFragmentPresenter;
 
 import java.util.ArrayList;
 
 
-public class RecyclerViewFragment extends Fragment{
+public class RecyclerViewFragment extends Fragment implements IRecyclerViewFragmentView{
 
-    private ArrayList<Contacto> contactos;
     private RecyclerView listaDeContactos;
+    private IRecyclerViewFragmentPresenter presenter;
 
-    public void inicializadorAdaptador(){
-        ContactoAdaptador adaptador=new ContactoAdaptador(contactos);
-        listaDeContactos.setAdapter(adaptador);
-    }
-    public void inicializarListaDeContactos(){
-        contactos = new ArrayList<Contacto>();
-
-        contactos.add(new Contacto(R.drawable.panda,"Jako","jako@.com","20","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal1,"Toby","Toby@oar.com","14","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal2,"Juno","jako@.com","56","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal3,"Betto","Toby@oar.com","6","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","5","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal6,"Toby","Toby@oar.com","6","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal7,"Juno","jako@.com","56","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal8,"Betto","Toby@oar.com","14","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal9,"Juno","jako@.com","66","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal10,"Betto","Toby@oar.com","16","4/3/4"));
-
-    }
 
     @Nullable
     @Override
@@ -47,16 +30,28 @@ public class RecyclerViewFragment extends Fragment{
         //return super.onCreateView(inflater, container, savedInstanceState);
         View v= inflater.inflate(R.layout.fragment_recyclerview, container,false);
         listaDeContactos= v.findViewById(R.id.rvContactos);
+
+        presenter= new RecyclerViewFragmentPresenter(this, getContext());
+
+        return v;
+    }
+
+    @Override
+    public void GenerarLinearLayoutVertical() {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         listaDeContactos.setLayoutManager(llm);
+    }
 
+    @Override
+    public MascotaAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
+        MascotaAdaptador adaptador=new MascotaAdaptador(mascotas, getActivity());
+        return adaptador;
+    }
 
-        inicializarListaDeContactos();
-        inicializadorAdaptador();
-
-
-        return v;
+    @Override
+    public void inicializarAdaptadorRecyclerView(MascotaAdaptador adaptador) {
+        listaDeContactos.setAdapter(adaptador);
     }
 }

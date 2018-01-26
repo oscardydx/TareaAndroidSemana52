@@ -20,8 +20,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class FormularioContacto extends AppCompatActivity {
-    String Correo="";
-    String Contraseña="";
+    String Correo="Introducir Aquí Correo";
+    String Contraseña="Introducir Aqui Contraseña";
 
     EditText mensaje;
     EditText remitente;

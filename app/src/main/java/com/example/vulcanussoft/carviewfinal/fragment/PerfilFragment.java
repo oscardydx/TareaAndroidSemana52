@@ -2,17 +2,16 @@ package com.example.vulcanussoft.carviewfinal.fragment;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.vulcanussoft.carviewfinal.R;
-import com.example.vulcanussoft.carviewfinal.adapter.ContactoAdaptador;
-import com.example.vulcanussoft.carviewfinal.pojo.Contacto;
+import com.example.vulcanussoft.carviewfinal.adapter.MascotaAdaptador;
+import com.example.vulcanussoft.carviewfinal.pojo.Mascota;
 
 import java.util.ArrayList;
 
@@ -27,24 +26,22 @@ public class PerfilFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private ArrayList<Contacto> contactos;
+    private ArrayList<Mascota> mascotas;
     private RecyclerView listaDeFotos;
 
     public void inicializadorAdaptador(){
-        ContactoAdaptador adaptador=new ContactoAdaptador(contactos);
+        MascotaAdaptador adaptador=new MascotaAdaptador(mascotas, getActivity());
         listaDeFotos.setAdapter(adaptador);
     }
     public void inicializarListaDeContactos(){
-        contactos = new ArrayList<Contacto>();
+        mascotas = new ArrayList<Mascota>();
 
 
-        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","1055","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","15","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","5","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","51","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","75","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","75","4/3/4"));
-        contactos.add(new Contacto(R.drawable.animal4,"Fito","jako@.com","95","4/3/4"));
+        mascotas.add(new Mascota(R.drawable.animal4,"Fito","jako@.com",10,"4/3/4"));
+        mascotas.add(new Mascota(R.drawable.animal4,"Fito","jako@.com",15,"4/3/4"));
+        mascotas.add(new Mascota(R.drawable.animal4,"Fito","jako@.com",5,"4/3/4"));
+        mascotas.add(new Mascota(R.drawable.animal4,"Fito","jako@.com",51,"4/3/4"));
+
 
 
     }
@@ -55,8 +52,15 @@ public class PerfilFragment extends Fragment {
        // return inflater.inflate(R.layout.fragment_perfil, container, false);
         View v= inflater.inflate(R.layout.fragment_perfil, container,false);
         listaDeFotos= v.findViewById(R.id.rvFotos);
+
+        /*
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);*/
+
+
+
+        GridLayoutManager llm = new GridLayoutManager(getActivity(),2);
+
 
         listaDeFotos.setLayoutManager(llm);
 
