@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.mRefresh:
-               Intent intent3=new Intent(MainActivity.this,LikeActivity.class);
-               startActivity(intent3);
+             /*  Intent intent3=new Intent(MainActivity.this,LikeActivity.class);
+               startActivity(intent3);*/
 
                 break;
         }
